@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-st.title("🚀 Mini Test Streamlit")
+st.title("Carte de suivi")
 st.write("Ceci est une démo de Streamlit depuis Google Colab.")
 
 name = st.text_input("Votre nom")
