@@ -24,7 +24,7 @@ if uploaded_file:
     dates = df[df.notna().idxmax(axis=1)[0]]
     dates = pd.to_datetime(dates)
 
-    ep =  
+    ep = df.iloc[:, 1]
     st.write("Valeur de ep :", ep)
     st.write("Valeur de dates :", dates)
     
