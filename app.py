@@ -25,7 +25,7 @@ if uploaded_file:
     dates = pd.to_datetime(dates)
 
     ep = df.iloc[:, 1]
-    print(ep)
+    print('ooooooooooooooooo',ep)
     zs = zscore(ep) #calcul zscores
     ep_SA = ep[np.abs(zs) < 1] #filtrage des données avec zscore < 1
     moy_ep_SA = ep_SA.mean()
