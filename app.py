@@ -25,14 +25,14 @@ if uploaded_file:
     dates = pd.to_datetime(dates)
 
     ep = df.iloc[:, 1]
-    print('ooooooooooooooooo',ep)
-    zs = zscore(ep) #calcul zscores
+    ep = pd.to_numeric(ep)
+    zs = zscore(ep) #calcul des zscores
     ep_SA = ep[np.abs(zs) < 1] #filtrage des données avec zscore < 1
     moy_ep_SA = ep_SA.mean()
     std_ep_SA = ep_SA.std()
 
-    ep = pd.to_numeric(ep, errors='coerce')  # Convertit en nombre, met NaN si erreur
-    zs = zscore(ep, nan_policy='omit')  # Calcule le z-score en ignorant les NaN
+    
+    
 
     Moins3sig = val_cible - 3*std_ep_SA/np.sqrt(nb_mesure_dek)
     Plus3sig = val_cible + 3*std_ep_SA/np.sqrt(nb_mesure_dek)
