@@ -24,7 +24,7 @@ if uploaded_file:
     numeric_columns = df.select_dtypes(include=['number']).columns.tolist()
 
     dates = df.iloc[:, 1]
-    dates = pd.to_datetime(dates)
+    #dates = pd.to_datetime(dates)
     st.write("Valeur de dates :", dates)
 
     ep = df.iloc[:, 2]
