@@ -18,6 +18,7 @@ if uploaded_file:
     # Afficher un aperçu des données
     st.subheader("Aperçu des données :")
     st.write(df.head())
+    st.write(df.columns)
 
     # Sélectionner une colonne numérique pour le graphe
     numeric_columns = df.select_dtypes(include=['number']).columns.tolist()
