@@ -26,6 +26,8 @@ if uploaded_file:
 
     ep = df.iloc[:, 1]
     st.write("Valeur de ep :", ep)
+    st.write("Valeur de dates :", dates)
+    
 
     ep = pd.to_numeric(ep)
     zs = zscore(ep) #calcul des zscores
