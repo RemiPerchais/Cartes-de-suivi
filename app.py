@@ -2,6 +2,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import zscore
 
 # Titre de l'application
 st.title("Analyse de Fichier Excel 📊")
@@ -19,16 +21,30 @@ if uploaded_file:
 
     # Sélectionner une colonne numérique pour le graphe
     numeric_columns = df.select_dtypes(include=['number']).columns.tolist()
+    dates = df.iloc[:, 0]
+    dates = pd.datetime(dates)
+
+    ep = df.iloc[:, 1]
+    zs = zscore(ep) #calcul zscores
+    ep_SA = ep[np.abs(zs) < 1] #filtrage des données avec zscore < 1
+    moy_ep_SA = ep_SA.mean()
+    std_ep_SA = ep_SA.std()
+
+    Moins3sig = val_cible - 3*std_ep_SA/np.sqrt(nb_mesure_dek)
+    Plus3sig = val_cible + 3*std_ep_SA/np.sqrt(nb_mesure_dek)
+    Moins6sig = val_cible - 6*std_ep_SA/np.sqrt(nb_mesure_dek)
+    Plus6sig = val_cible + 6*std_ep_SA/np.sqrt(nb_mesure_dek)
     
     if numeric_columns:
         column = st.selectbox("Choisissez une colonne pour le graphe", numeric_columns)
 
         # Générer le graphe
         fig, ax = plt.subplots()
-        ax.plot(df[column], marker='o', linestyle='-')
-        ax.set_title(f"Évolution de {column}")
-        ax.set_xlabel("Index")
-        ax.set_ylabel(column)
+        plt.figure(figsize=(10, 5))
+        plt.plot(dates, ep, marker="o", linestyle="-", color="r", label="ep")
+
+        plt.axhline(y=Moins3sig, color="red", linestyle="--", label="Moyenne")  
+        plt.axhline(y=Plus3sig, color="green", linestyle="-.", label="Seuil 50")  # Seuil à 50
 
         # Afficher le graphe dans Streamlit
         st.pyplot(fig)
