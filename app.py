@@ -2,7 +2,7 @@
 import streamlit as st
 
 st.title("Carte de suivi")
-st.write("Ceci est une démo de Streamlit depuis Google Colab.")
+st.write("Ceci est une démo.")
 
 name = st.text_input("Votre nom")
 if name:
