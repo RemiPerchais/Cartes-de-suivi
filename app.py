@@ -23,10 +23,11 @@ if uploaded_file:
     numeric_columns = df.select_dtypes(include=['number']).columns.tolist()
     dates = df[df.notna().idxmax(axis=1)[0]]
     dates = pd.to_datetime(dates)
+    st.write("Valeur de dates :", dates)
 
     ep = df.iloc[:, 1]
     st.write("Valeur de ep :", ep)
-    st.write("Valeur de dates :", dates)
+    
     
 
     ep = pd.to_numeric(ep)
