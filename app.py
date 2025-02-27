@@ -22,7 +22,7 @@ if uploaded_file:
     # Sélectionner une colonne numérique pour le graphe
     numeric_columns = df.select_dtypes(include=['number']).columns.tolist()
     dates = df.iloc[:, 0]
-    dates = pd.datetime(dates)
+    dates = pd.to_datetime(dates)
 
     ep = df.iloc[:, 1]
     zs = zscore(ep) #calcul zscores
