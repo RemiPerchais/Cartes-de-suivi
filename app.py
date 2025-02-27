@@ -25,6 +25,9 @@ if uploaded_file:
     dates = pd.to_datetime(dates)
 
     ep = df.iloc[:, 1]
+    print(type(ep))  # Vérifie le type
+    print(ep.head())  # Affiche les premières valeurs
+
     ep = pd.to_numeric(ep)
     zs = zscore(ep) #calcul des zscores
     ep_SA = ep[np.abs(zs) < 1] #filtrage des données avec zscore < 1
