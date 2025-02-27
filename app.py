@@ -22,6 +22,10 @@ if uploaded_file:
 
     # Sélectionner une colonne numérique pour le graphe
     numeric_columns = df.select_dtypes(include=['number']).columns.tolist()
+
+    ep = df["Epaisseur dektak (nm)"]
+    st.write("Valeur de ep :", ep)
+
     dates = df["Date du traitement de l'échant"]
     dates = pd.to_datetime(dates)
     st.write("Valeur de dates :", dates)
