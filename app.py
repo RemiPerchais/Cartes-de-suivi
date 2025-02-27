@@ -6,4 +6,4 @@ st.write("Ceci est une .")
 
 name = st.text_input("Votre nom")
 if name:
-    st.write(f"Bonjour, {name} ! 👋")
+    st.write(f"Caca, {name} ! 👋")
